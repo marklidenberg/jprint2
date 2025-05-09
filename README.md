@@ -21,8 +21,8 @@ jprint('{"name": "Mark"}', keep_strings=False)  # "{\"name\": \"Mark\"}"
 # - Set defaults of your liking
 
 set_defaults(
-	indent=2, 
-	sort_keys=True
+    indent=2, 
+    sort_keys=True
 )
 
 # - Format json
