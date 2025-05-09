@@ -5,10 +5,17 @@ from pygments.formatters import TerminalFormatter
 from typing import Union, Any, Callable
 from jprint2.defaults import defaults, USE_DEFAULT
 from jprint2.jformat import jformat
+import sys
 
 
 def jprint(
-    value: Any,
+    # - Print options
+    *objects,
+    sep=" ",
+    end="\n",
+    file=sys.stdout,
+    flush=False,
+    # - Json options
     keep_strings: bool = USE_DEFAULT,
     formatter: Callable = USE_DEFAULT,
     indent: int = USE_DEFAULT,
@@ -16,10 +23,12 @@ def jprint(
     ensure_ascii: bool = USE_DEFAULT,
     colorize: bool = True,
 ):
+    """Pretty"""
+
     # - Get json string
 
     json_string = jformat(
-        value,
+        objects if len(objects) > 1 else objects[0],
         keep_strings=keep_strings,
         formatter=formatter,
         indent=indent,
@@ -38,7 +47,13 @@ def jprint(
 
     # - Print
 
-    print(json_string.strip())
+    print(
+        json_string.strip(),
+        sep=sep,
+        end=end,
+        file=file,
+        flush=flush,
+    )
 
 
 def example():

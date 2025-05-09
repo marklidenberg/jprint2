@@ -5,7 +5,7 @@ import jsons
 
 def default_formatter(
     value: Any,
-    indent: int = 4,
+    indent: int = None,
     sort_keys: bool = False,
     ensure_ascii: bool = False,
 ):
@@ -21,7 +21,7 @@ def default_formatter(
 
 defaults = {
     "keep_strings": True,
-    "indent": 2,
+    "indent": None,
     "sort_keys": False,
     "ensure_ascii": False,
     "formatter": default_formatter,
