@@ -1,6 +1,6 @@
 # jprint2
 
-Print any object in JSON. Built on top of [jsons](https://github.com/ramonhagenaars/jsons) for formatting and [pygments](https://pygments.org/) for colorizing.
+Print any Python object as JSON. Built on top of [jsons](https://github.com/ramonhagenaars/jsons) for formatting and [pygments](https://pygments.org/) for colorizing.
 
 ## Basic usage 
 
