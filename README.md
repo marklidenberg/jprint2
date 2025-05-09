@@ -37,6 +37,14 @@ my_json_string = jformat({"name": "Mark", "age": 30})
 
 jprint({"name": "🧙‍♂️", "age": 30}, ensure_ascii=True) # {"name": "\ud83e\uddd9\u200d\u2642\ufe0f", "age": 30}
 
+
+# - Import `jprint2.replace_print_with_jprint` to replace `print` with `jprint` in ALL places
+
+# in the beginning of your script
+import jprint2.replace_print_with_jprint
+
+print("Hello world", "asdf") # ["Hello world", "asdf"]
+
 ```
 
 ## License

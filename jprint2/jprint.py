@@ -1,3 +1,5 @@
+import builtins
+
 from pygments import highlight
 from pygments.lexers import JsonLexer
 from pygments.formatters import TerminalFormatter
@@ -47,7 +49,13 @@ def jprint(
 
     # - Print
 
-    print(
+    # -- Get original print
+
+    orig_print = (
+        builtins.__orig_print__ if hasattr(builtins, "__orig_print__") else print
+    )
+
+    orig_print(
         json_string.strip(),
         sep=sep,
         end=end,
