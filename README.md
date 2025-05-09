@@ -35,8 +35,6 @@ jprint({"name": "🧙‍♂️", "age": 30}, ensure_ascii=True) # {"name": "\ud8
 
 ```
 
-![Example output](docs/jprint.png "Example output")
-
 ## License
 
 MIT License
