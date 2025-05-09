@@ -1,12 +1,16 @@
 # jprint2
 
-Print any Python object as JSON. Built on top of [jsons](https://github.com/ramonhagenaars/jsons) for formatting and [pygments](https://pygments.org/) for colorizing.
+Drop-in replacement for `print` with json formatting. Built on top of [jsons](https://github.com/ramonhagenaars/jsons) for formatting and [pygments](https://pygments.org/) for colorizing.
 
 ## Basic usage 
 
 ```python
 
 from jprint2 import jprint, jformat, set_defaults
+
+# - Drop-in replacement for print
+
+jprint("a", "b", "c") # ["a", "b", "c"]
 
 # - Print json
 

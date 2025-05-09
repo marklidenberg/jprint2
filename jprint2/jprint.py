@@ -23,7 +23,7 @@ def jprint(
     ensure_ascii: bool = USE_DEFAULT,
     colorize: bool = True,
 ):
-    """Pretty"""
+    """Drop-in replacement for print with json formatting."""
 
     # - Get json string
 
