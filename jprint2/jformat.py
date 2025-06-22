@@ -34,6 +34,7 @@ def jformat(
         "formatter",
         provided=formatter,
     )
+
     # - Format and return
 
     return formatter(
