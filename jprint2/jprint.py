@@ -1,11 +1,14 @@
+import builtins
+
 from pygments import highlight
 from pygments.lexers import JsonLexer
 from pygments.formatters import TerminalFormatter
 
 from typing import Union, Any, Callable
 from jprint2.defaults import defaults, USE_DEFAULT
-from jprint2.jformat import jformat
 import sys
+
+from jprint2.jformat import jformat
 
 
 def jprint(
@@ -16,20 +19,19 @@ def jprint(
     file=sys.stdout,
     flush=False,
     # - Json options
-    keep_strings: bool = USE_DEFAULT,
     formatter: Callable = USE_DEFAULT,
     indent: int = USE_DEFAULT,
     sort_keys: bool = USE_DEFAULT,
     ensure_ascii: bool = USE_DEFAULT,
+    # - Colorize options
     colorize: bool = True,
 ):
-    """Pretty"""
+    """Drop-in replacement for print with json formatting."""
 
     # - Get json string
 
     json_string = jformat(
         objects if len(objects) > 1 else objects[0],
-        keep_strings=keep_strings,
         formatter=formatter,
         indent=indent,
         sort_keys=sort_keys,
@@ -47,7 +49,15 @@ def jprint(
 
     # - Print
 
-    print(
+    # -- Get original print (in case it was replaced with `replace_print_with_jprint`)
+
+    orig_print = (
+        builtins.__orig_print__ if hasattr(builtins, "__orig_print__") else print
+    )
+
+    # -- Print
+
+    orig_print(
         json_string.strip(),
         sep=sep,
         end=end,
@@ -61,7 +71,8 @@ def example():
     import json
 
     jprint({"name": "Mark", "age": 30}, formatter=json.dumps)
-    jprint('{"name": "Mark"}', keep_strings=False)
+    jprint("a", "b", "c")
+    print()
 
 
 if __name__ == "__main__":

@@ -1,8 +1,10 @@
-# - forbid all
+
+# - Forbid all
 
 **/*.*
 
-# - allow subdirectories with a dot
+# - Allow subdirectories with a dot
+
 !**/*.*/
 !*.py
 !.gitignore
@@ -15,6 +17,9 @@
 !*.yaml
 !*.png
 !*.md
+!*.json
+!*.code-workspace
 
-# - forbid .venv
+# - Forbid .venv
+
 .venv

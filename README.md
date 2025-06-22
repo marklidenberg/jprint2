@@ -1,37 +1,48 @@
 # jprint2
 
-Print any Python object as JSON. Built on top of [jsons](https://github.com/ramonhagenaars/jsons) for formatting and [pygments](https://pygments.org/) for colorizing.
+A drop-in replacement for `print` that formats output as JSON using [jsons](https://github.com/ramonhagenaars/jsons) and colorizes it with [pygments](https://pygments.org/).
 
-## Basic usage 
+![Example](docs/example.png)
+
+## Usage
 
 ```python
 
-from jprint2 import jprint, jformat, set_defaults
-
 # - Print json
 
-jprint({"name": "Mark", "age": 30}) # {"name": "Mark", "age": 30}
+from jprint2 import jprint
 
-# - Keeps strings by default as is to preserve json objects
+jprint("a", "b", "c")
+# [
+#   "a",
+#   "b",
+#   "c"
+# ]
+
+jprint({"name": "Mark", "mood": 10})
+# {
+#   "name": "Mark",
+#   "mood": 10 
+# }
 
 jprint("Mark") # Mark
-jprint('{"name": "Mark"}') # {"name": "Mark"}
-jprint('{"name": "Mark"}', keep_strings=False)  # "{\"name\": \"Mark\"}"
 
-# - Set defaults of your liking
+jprint('{"name": "Mark"}')
+# {
+#   "name": "Mark"
+# }
 
-set_defaults(
-    indent=2, 
-    sort_keys=True
-)
+# - Replace print with jprint
 
-# - Format json
+import jprint2.replace_print_with_jprint
+# ... your script
 
-my_json_string = jformat({"name": "Mark", "age": 30})
+print("Hello", "friend!")
+# [
+#   "Hello",
+#   "friend!"
+# ]
 
-# - Override defaults
-
-jprint({"name": "🧙‍♂️", "age": 30}, ensure_ascii=True) # {"name": "\ud83e\uddd9\u200d\u2642\ufe0f", "age": 30}
 
 ```
 

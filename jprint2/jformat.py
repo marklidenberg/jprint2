@@ -1,17 +1,16 @@
 from typing import Any, Callable
 import jsons
 
-from jprint2.defaults import USE_DEFAULT, defaults
+from jprint2.defaults import USE_DEFAULT, defaults, get_default, set_defaults
 
 try:
-    import ujson as json
+    import ujson as json  # type: ignore
 except ImportError:
     import json
 
 
 def jformat(
     value: Any,
-    keep_strings: bool = USE_DEFAULT,
     formatter: Callable = USE_DEFAULT,
     indent: int = USE_DEFAULT,
     sort_keys: bool = USE_DEFAULT,
@@ -19,21 +18,22 @@ def jformat(
 ):
     # - Process arguments
 
-    keep_strings = (
-        defaults["keep_strings"] if keep_strings is USE_DEFAULT else keep_strings
+    indent = get_default(
+        "indent",
+        provided=indent,
     )
-    indent = defaults["indent"] if indent is USE_DEFAULT else indent
-    sort_keys = defaults["sort_keys"] if sort_keys is USE_DEFAULT else sort_keys
-    ensure_ascii = (
-        defaults["ensure_ascii"] if ensure_ascii is USE_DEFAULT else ensure_ascii
+    sort_keys = get_default(
+        "sort_keys",
+        provided=sort_keys,
     )
-    formatter = defaults["formatter"] if formatter is USE_DEFAULT else formatter
-
-    # - Return if keep_strings is True and value is a string
-
-    if keep_strings and isinstance(value, str):
-        return value
-
+    ensure_ascii = get_default(
+        "ensure_ascii",
+        provided=ensure_ascii,
+    )
+    formatter = get_default(
+        "formatter",
+        provided=formatter,
+    )
     # - Format and return
 
     return formatter(
@@ -45,11 +45,10 @@ def jformat(
 
 
 def test():
+    set_defaults(indent=None)
     assert jformat(1) == "1"
     assert jformat("1") == "1"
     assert jformat({"a": 1}) == '{"a": 1}'
-    assert jformat({"a": 1}, keep_strings=True) == '{"a": 1}'
-    assert jformat({"a": 1}, keep_strings=False) == '{"a": 1}'
 
 
 if __name__ == "__main__":
