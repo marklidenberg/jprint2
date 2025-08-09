@@ -25,15 +25,15 @@ Mark
 {
   "name": "Mark"
 }
->>> import jprint2.replace_print_with_jprint  # replace built-in print
+>>> import jprint2.replace_print_with_jprint
 >>> print("Hello", "friend!")
 [
   "Hello",
   "friend!"
 ]
->>> from jprint2 import set_defaults  # configure defaults
+>>> from jprint2 import set_defaults
 >>> set_defaults(indent=2, sort_keys=True)
->>> from jprint2 import jformat  # format JSON to string
+>>> from jprint2 import jformat
 >>> my_json_string = jformat({"name": "Mark", "age": 30})
 
 ```

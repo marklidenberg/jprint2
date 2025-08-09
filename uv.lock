@@ -265,6 +265,21 @@ wheels = [
 ]
 
 [[package]]
+name = "dony"
+version = "0.1.10"
+source = { registry = "https://pypi.org/simple" }
+dependencies = [
+    { name = "jprint2" },
+    { name = "load-dotenv" },
+    { name = "pyperclip" },
+    { name = "questionary" },
+]
+sdist = { url = "https://files.pythonhosted.org/packages/52/69/e0801086941a3786f35bb42e983cb9695be7a4a82b7d56dabf310509309f/dony-0.1.10.tar.gz", hash = "sha256:ac3af559328624c0d0934debc702e9c7d6522cb7cd391b6e76f6a0168870ea48", size = 50584, upload-time = "2025-08-09T16:24:04.193Z" }
+wheels = [
+    { url = "https://files.pythonhosted.org/packages/bc/39/a130b0541a3970776dd3ae385c734ba3a3afe1323d126111d2e6bbab0d84/dony-0.1.10-py3-none-any.whl", hash = "sha256:6a5946dd3e75e1a4bf7f4aab335383e45fc58487aa2a789797c4877ebf552b47", size = 22190, upload-time = "2025-08-09T16:24:02.584Z" },
+]
+
+[[package]]
 name = "id"
 version = "1.5.0"
 source = { registry = "https://pypi.org/simple" }
@@ -376,9 +391,10 @@ wheels = [
 
 [[package]]
 name = "jprint2"
-version = "0.1.1"
+version = "0.1.2"
 source = { editable = "." }
 dependencies = [
+    { name = "dony" },
     { name = "jsons" },
     { name = "pygments" },
 ]
@@ -396,6 +412,7 @@ dev = [
 requires-dist = [
     { name = "better-exceptions", marker = "extra == 'dev'", specifier = ">=0.3.3" },
     { name = "build", marker = "extra == 'dev'", specifier = ">=1.2.2.post1" },
+    { name = "dony", specifier = ">=0.1.10" },
     { name = "jsons", specifier = ">=1.6.3" },
     { name = "load-dotenv", marker = "extra == 'dev'", specifier = ">=0.1.0" },
     { name = "pygments", specifier = ">=2.19.1" },
@@ -586,6 +603,12 @@ sdist = { url = "https://files.pythonhosted.org/packages/7c/2d/c3338d48ea6cc0feb
 wheels = [
     { url = "https://files.pythonhosted.org/packages/8a/0b/9fcc47d19c48b59121088dd6da2488a49d5f72dacf8262e2790a1d2c7d15/pygments-2.19.1-py3-none-any.whl", hash = "sha256:9ea1544ad55cecf4b8242fab6dd35a93bbce657034b0611ee383099054ab6d8c", size = 1225293, upload-time = "2025-01-06T17:26:25.553Z" },
 ]
+
+[[package]]
+name = "pyperclip"
+version = "1.9.0"
+source = { registry = "https://pypi.org/simple" }
+sdist = { url = "https://files.pythonhosted.org/packages/30/23/2f0a3efc4d6a32f3b63cdff36cd398d9701d26cda58e3ab97ac79fb5e60d/pyperclip-1.9.0.tar.gz", hash = "sha256:b7de0142ddc81bfc5c7507eea19da920b92252b548b96186caf94a5e2527d310", size = 20961, upload-time = "2024-06-18T20:38:48.401Z" }
 
 [[package]]
 name = "pyproject-hooks"
