@@ -25,7 +25,8 @@ Mark
 {
   "name": "Mark"
 }
->>> import jprint2.replace_print_with_jprint
+>>> from jprint2 import override_print
+>>> override_print()
 >>> print("Hello", "friend!")
 [
   "Hello",
