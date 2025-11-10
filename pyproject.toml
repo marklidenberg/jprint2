@@ -1,7 +1,7 @@
 [project]
 name = "jprint2"
-version = "0.2.0"
-description = "Simple json printer for python"
+version = "0.3.0"
+description = "Simple JSON printer for Python - print colorized, formatted JSON with one function"
 readme = "README.md"
 requires-python = ">=3.8"
 authors = [
@@ -20,7 +20,6 @@ classifiers = [
     "Programming Language :: Python :: 3.13",
 ]
 dependencies = [
-    "dony>=0.1.10",
     "jsons>=1.6.3",
     "pygments>=2.19.1",
 ]
@@ -30,8 +29,7 @@ dev = [
     "build>=1.2.2.post1",
     "twine>=6.1.0",
     "load-dotenv>=0.1.0",
-    "questionary>=2.1.0",
-    "better-exceptions>=0.3.3",
+    "dony>=0.2.1",
 ]
 
 [build-system]

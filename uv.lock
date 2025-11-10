@@ -16,18 +16,6 @@ wheels = [
 ]
 
 [[package]]
-name = "better-exceptions"
-version = "0.3.3"
-source = { registry = "https://pypi.org/simple" }
-dependencies = [
-    { name = "colorama", marker = "sys_platform == 'win32'" },
-]
-sdist = { url = "https://files.pythonhosted.org/packages/26/d8/30b745b965765c08ee132fd590fca46c31296e8f1a606de0c53cc6b5a68f/better_exceptions-0.3.3.tar.gz", hash = "sha256:e4e6bc18444d5f04e6e894b10381e5e921d3d544240418162c7db57e9eb3453b", size = 30156, upload-time = "2021-01-29T16:48:54.914Z" }
-wheels = [
-    { url = "https://files.pythonhosted.org/packages/ed/50/abf6850135f1e95d321a525d0a36e05255a039b3fc118b7d88413e8a8207/better_exceptions-0.3.3-py3-none-any.whl", hash = "sha256:9c70b1c61d5a179b84cd2c9d62c3324b667d74286207343645ed4306fdaad976", size = 11857, upload-time = "2021-01-29T16:48:53.642Z" },
-]
-
-[[package]]
 name = "build"
 version = "1.2.2.post1"
 source = { registry = "https://pypi.org/simple" }
@@ -266,7 +254,7 @@ wheels = [
 
 [[package]]
 name = "dony"
-version = "0.1.10"
+version = "0.2.1"
 source = { registry = "https://pypi.org/simple" }
 dependencies = [
     { name = "jprint2" },
@@ -274,9 +262,9 @@ dependencies = [
     { name = "pyperclip" },
     { name = "questionary" },
 ]
-sdist = { url = "https://files.pythonhosted.org/packages/52/69/e0801086941a3786f35bb42e983cb9695be7a4a82b7d56dabf310509309f/dony-0.1.10.tar.gz", hash = "sha256:ac3af559328624c0d0934debc702e9c7d6522cb7cd391b6e76f6a0168870ea48", size = 50584, upload-time = "2025-08-09T16:24:04.193Z" }
+sdist = { url = "https://files.pythonhosted.org/packages/21/90/dbb0bdae5a3e4e59677fd10b9d3cfa61605bcc8a38b914a1dadceb6d87ae/dony-0.2.1.tar.gz", hash = "sha256:eb72f9b6ea16726a6226187f1511953bf86891047ca3e6277247f42fe88f0564", size = 50821, upload-time = "2025-08-10T12:25:52.696Z" }
 wheels = [
-    { url = "https://files.pythonhosted.org/packages/bc/39/a130b0541a3970776dd3ae385c734ba3a3afe1323d126111d2e6bbab0d84/dony-0.1.10-py3-none-any.whl", hash = "sha256:6a5946dd3e75e1a4bf7f4aab335383e45fc58487aa2a789797c4877ebf552b47", size = 22190, upload-time = "2025-08-09T16:24:02.584Z" },
+    { url = "https://files.pythonhosted.org/packages/7a/f0/fb44f710c578d5f592536e359f25fc02776d4d0b41b3f5e44cd6823caeb9/dony-0.2.1-py3-none-any.whl", hash = "sha256:a946cbabda48b8fe6aff6d76d6898062738bc86948429f8b6421c27e1d3b809b", size = 22588, upload-time = "2025-08-10T12:25:51.068Z" },
 ]
 
 [[package]]
@@ -391,32 +379,28 @@ wheels = [
 
 [[package]]
 name = "jprint2"
-version = "0.1.2"
+version = "0.3.0"
 source = { editable = "." }
 dependencies = [
-    { name = "dony" },
     { name = "jsons" },
     { name = "pygments" },
 ]
 
 [package.optional-dependencies]
 dev = [
-    { name = "better-exceptions" },
     { name = "build" },
+    { name = "dony" },
     { name = "load-dotenv" },
-    { name = "questionary" },
     { name = "twine" },
 ]
 
 [package.metadata]
 requires-dist = [
-    { name = "better-exceptions", marker = "extra == 'dev'", specifier = ">=0.3.3" },
     { name = "build", marker = "extra == 'dev'", specifier = ">=1.2.2.post1" },
-    { name = "dony", specifier = ">=0.1.10" },
+    { name = "dony", marker = "extra == 'dev'", specifier = ">=0.2.1" },
     { name = "jsons", specifier = ">=1.6.3" },
     { name = "load-dotenv", marker = "extra == 'dev'", specifier = ">=0.1.0" },
     { name = "pygments", specifier = ">=2.19.1" },
-    { name = "questionary", marker = "extra == 'dev'", specifier = ">=2.1.0" },
     { name = "twine", marker = "extra == 'dev'", specifier = ">=6.1.0" },
 ]
 provides-extras = ["dev"]

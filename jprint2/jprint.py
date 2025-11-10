@@ -1,88 +1,65 @@
-import builtins
+"""Simple JSON printer for Python."""
+
 import json
+from typing import Any
+
+try:
+    import jsons
+except ImportError:
+    jsons = None  # type: ignore
 
 from pygments import highlight
-from pygments.lexers import JsonLexer
-from pygments.formatters import TerminalFormatter
-
-from typing import Union, Any, Callable
-import sys
-
-from jprint2.defaults.use_default import USE_DEFAULT
-from jprint2.jformat import jformat
+from pygments.lexers import JsonLexer  # type: ignore
+from pygments.formatters import TerminalFormatter  # type: ignore
 
 
-def jprint(
-    # - Print options
-    *objects,
-    sep=" ",
-    end="\n",
-    file=sys.stdout,
-    flush=False,
-    # - Colorize options
-    colorize: bool = True,
-    # - Formatter
-    formatter: Callable = USE_DEFAULT,
-    # - Json.dumps arguments
-    skipkeys: bool = USE_DEFAULT,
-    ensure_ascii: bool = USE_DEFAULT,
-    check_circular: bool = USE_DEFAULT,
-    allow_nan: bool = USE_DEFAULT,
-    cls: json.JSONEncoder = USE_DEFAULT,
-    indent: int = USE_DEFAULT,
-    separators: tuple = USE_DEFAULT,
-    default: Callable = USE_DEFAULT,
-    sort_keys: bool = USE_DEFAULT,
-):
-    """Drop-in replacement for print with json formatting."""
+def jprint(*objects: Any, indent: bool = True) -> None:
+    """Print objects as formatted, colorized JSON.
 
-    # - Get json string
+    Args:
+        *objects: Objects to print. If multiple objects are provided, they are printed as a list.
+        indent: Whether to indent the JSON output. Default is True (indent with 2 spaces).
+    """
 
-    json_string = jformat(
-        objects if len(objects) > 1 else objects[0],
-        formatter=formatter,
-        skipkeys=skipkeys,
-        ensure_ascii=ensure_ascii,
-        check_circular=check_circular,
-        allow_nan=allow_nan,
-        cls=cls,
-        indent=indent,
-        separators=separators,
-        default=default,
-        sort_keys=sort_keys,
+    # - Handle single vs multiple objects
+
+    value = objects[0] if len(objects) == 1 else list(objects)
+
+    # - Convert to JSON-serializable format using jsons if available
+
+    if jsons is not None:
+        try:
+            value = jsons.dump(value)
+        except Exception:
+            pass  # Fall back to standard json serialization
+
+    # - Convert to JSON string
+
+    json_string = json.dumps(
+        value,
+        indent=2 if indent else None,
+        default=str,  # Fallback for non-serializable objects
+        ensure_ascii=False,
     )
 
-    # - Colorize if needed
+    # - Colorize the output
 
-    if colorize:
-        json_string = highlight(
-            code=json_string,
-            lexer=JsonLexer(),
-            formatter=TerminalFormatter(),
-        )
-
-    # - Print
-
-    # -- Get original print (in case it was replaced with `replace_print_with_jprint`)
-
-    builtin_print = (
-        builtins.__builtin_print__ if hasattr(builtins, "__builtin_print__") else print
+    colored_output = highlight(
+        code=json_string,
+        lexer=JsonLexer(),
+        formatter=TerminalFormatter(),
     )
 
-    # -- Print
+    # - Print the result
 
-    builtin_print(
-        json_string.strip(),
-        sep=sep,
-        end=end,
-        file=file,
-        flush=flush,
-    )
+    print(colored_output.strip())
 
 
 def example():
+    """Example usage of jprint."""
     jprint({"name": "Mark", "age": 30})
     jprint("a", "b", "c")
+    jprint({"name": "Mark", "age": 30}, indent=False)
 
 
 if __name__ == "__main__":

@@ -1,7 +1,7 @@
 import os
 from typing import Optional
 
-import dony
+import dony  # type: ignore
 
 __NAME__ = "release:0.1.1"
 
@@ -22,7 +22,7 @@ def release(
 
     # - Select default arguments
 
-    version = dony.select(
+    version_result = dony.select(
         "Choose version",
         choices=[
             "patch",
@@ -31,6 +31,7 @@ def release(
         ],
         provided=version,
     )
+    version = version_result if isinstance(version_result, str) else None
 
     uv_publish_token = dony.input(
         "Enter UV publish token (usually a PyPI token)",

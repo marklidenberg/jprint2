@@ -1,6 +1,6 @@
 # jprint2
 
-A drop-in replacement for `print` that formats output as JSON using [jsons](https://github.com/ramonhagenaars/jsons) and colorizes it with [pygments](https://pygments.org/).
+Print Python objects as colorized, formatted JSON.
 
 ![Example](docs/example.png)
 
@@ -19,23 +19,8 @@ A drop-in replacement for `print` that formats output as JSON using [jsons](http
   "name": "Mark",
   "mood": 10
 }
->>> jprint("Mark")
-Mark
->>> jprint('{"name": "Mark"}')
-{
-  "name": "Mark"
-}
->>> from jprint2 import override_print
->>> override_print()
->>> print("Hello", "friend!")
-[
-  "Hello",
-  "friend!"
-]
->>> from jprint2 import set_defaults
->>> set_defaults(indent=2, sort_keys=True)
->>> from jprint2 import jformat
->>> my_json_string = jformat({"name": "Mark", "age": 30})
+>>> jprint({"name": "Mark", "age": 30}, indent=False)
+{"name": "Mark", "age": 30}
 
 ```
 

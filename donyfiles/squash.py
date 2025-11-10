@@ -1,7 +1,7 @@
 import re
 from typing import Optional
 
-import dony
+import dony  # type: ignore
 
 
 __NAME__ = "squash:0.1.9"
@@ -19,12 +19,13 @@ def squash(
 
     # - Get target branch
 
+    default_branch = dony.shell(
+        "git branch --list main | grep -q main && echo main || echo master",
+        quiet=True,
+    )
     target_branch = dony.input(
         "Enter target branch:",
-        default=dony.shell(
-            "git branch --list main | grep -q main && echo main || echo master",
-            quiet=True,
-        ),
+        default=default_branch or "",
         provided=target_branch,
     )
 
