@@ -24,7 +24,7 @@ dependencies = [
     "pygments>=2.19.1",
 ]
 
-[project.optional-dependencies]
+[dependency-groups]
 dev = [
     "build>=1.2.2.post1",
     "twine>=6.1.0",
