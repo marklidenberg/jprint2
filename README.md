@@ -4,7 +4,13 @@ Print Python objects as colorized, formatted JSON.
 
 ![Example](docs/example.png)
 
+
 ## Usage
+
+```python
+def jprint(*objects: Any, indent: bool = True) -> None:
+   ...
+```
 
 ```python
 >>> from jprint2 import jprint
