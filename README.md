@@ -4,6 +4,11 @@ Print Python objects as colorized, formatted JSON.
 
 ![Example](docs/example.png)
 
+## Installation
+
+```bash
+pip install jprint2
+```
 
 ## Usage
 
