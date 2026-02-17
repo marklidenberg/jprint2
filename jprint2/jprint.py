@@ -3,10 +3,7 @@
 import json
 from typing import Any
 
-try:
-    import jsons
-except ImportError:
-    jsons = None  # type: ignore
+import jsons
 
 from pygments import highlight
 from pygments.lexers import JsonLexer  # type: ignore
@@ -27,11 +24,7 @@ def jprint(*objects: Any, indent: bool = True) -> None:
 
     # - Convert to JSON-serializable format using jsons if available
 
-    if jsons is not None:
-        try:
-            value = jsons.dump(value)
-        except Exception:
-            pass  # Fall back to standard json serialization
+    value = jsons.dump(value)
 
     # - Convert to JSON string
 

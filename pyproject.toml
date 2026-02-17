@@ -20,9 +20,7 @@ classifiers = [
     "Programming Language :: Python :: 3.13",
 ]
 dependencies = [
-    "dony>=0.5.1",
     "jsons>=1.6.3",
-    "marklidenberg-donyfiles>=0.4.0",
     "pygments>=2.19.1",
 ]
 
@@ -31,8 +29,9 @@ dev = [
     "build>=1.2.2.post1",
     "twine>=6.1.0",
     "load-dotenv>=0.1.0",
-    "dony>=0.2.1",
-    "marklidenberg-donyfiles>=0.3.0",
+    "dony>=0.5.1",
+    "ty>=0.0.14",
+    "fire>=0.7.0",
 ]
 
 [build-system]
@@ -42,4 +41,3 @@ build-backend = "hatchling.build"
 
 [tool.hatch.build.targets.sdist]
 exclude = ["docs/*.png"]
-

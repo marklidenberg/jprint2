@@ -12,13 +12,11 @@
 !pyproject.toml
 !uv.lock
 !*.template
-!.secrets.baseline
 !*.sh
 !*.yaml
 !*.png
 !*.md
 !*.json
-!*.code-workspace
 
 # - Forbid .venv
 
