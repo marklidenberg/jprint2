@@ -34,9 +34,10 @@ async def release(
 
     # - Exit if there are staged changes
 
-    await shell("""
-        git diff --cached --name-only | grep -q . && git stash
-    """)
+    staged_files = await shell("git diff --cached --name-only")
+    assert (
+        not staged_files
+    ), "There are staged changes. Please commit or unstage them first."
 
     # - Bump
 
